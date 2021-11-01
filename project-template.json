@@ -1,0 +1,17 @@
+{
+    "name": "ConnectionManager",
+	"name_dashed": "connection-manager",
+	"postgres": {
+		"db_name": "connection_manager",
+		"db_user": "cm_user",
+		"db_dev_password": "Get$$hipDone!",
+		"port": "54329"
+	},
+	"redis": {
+		"port": "63799"
+	},
+	"web-api": {
+		"project_name": "CM.WebApi",
+		"image_name": "cm-web-api"
+	}
+}

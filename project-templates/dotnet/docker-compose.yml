@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  {{#if postgres}}
+  postgres:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    environment:
+      - "POSTGRES_DB={{postgres.db_name}}"
+      - "POSTGRES_USER={{postgres.db_user}}"
+      - "POSTGRES_PASSWORD={{postgres.db_dev_password}}"
+    ports:
+        - "{{postgres.port}}:5432"
+    volumes:
+        - "pgdata1:/var/lib/postgresql/data"
+  {{/if}}
+  {{#if redis}}
+  redis:
+    image: redis:5-alpine
+    restart: unless-stopped
+    ports:
+      - "63792:{{redis.port}}"
+    volumes:
+      - "redis:/data"
+    {{/if}}
+volumes:
+  {{#if postgres}}
+  pgdata1:
+  {{/if}}
+  {{#if redis}}
+  redis:
+  {{/if}}
+  
+  
